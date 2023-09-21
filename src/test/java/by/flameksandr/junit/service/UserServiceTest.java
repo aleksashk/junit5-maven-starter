@@ -7,13 +7,13 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@TestInstance(TestInstance.Lifecycle.PER_METHOD)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserServiceTest {
     private UserService userService;
 
     @BeforeAll
-    static void init() {
-        System.out.println("Before all: ");
+    void init() {
+        System.out.println("Before all: " + this);
     }
 
     @BeforeEach
@@ -46,7 +46,7 @@ public class UserServiceTest {
     }
 
     @AfterAll
-    static void closeConnectionPool() {
-        System.out.println("After all: ");
+    void closeConnectionPool() {
+        System.out.println("After all: " + this);
     }
 }
